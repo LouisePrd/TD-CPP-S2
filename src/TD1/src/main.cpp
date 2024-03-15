@@ -19,6 +19,8 @@ int main()
 
     std::cout << std::endl << "sub(f1, f2) = ";
     (sub(f1, f2)).display();
+    std::cout << std::endl << "Avec opérateur : sub(f1, f2) = ";
+    (f1 - f2).display();
 
     std::cout << std::endl << "mul(f1, f2) = ";
     (mul(f1, f2)).display();
