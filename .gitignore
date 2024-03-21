@@ -22,3 +22,5 @@ yarn-error.log*
 # embedded C++ project
 */bin
 */build
+
+*/.vscode
