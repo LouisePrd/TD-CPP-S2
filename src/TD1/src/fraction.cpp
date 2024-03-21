@@ -223,7 +223,7 @@ float ceil(Fraction const &f)
 
 float floor(Fraction const &f)
 {
-    return floorf(f.numerator / f.denominator);
+    return std::floor(f.numerator / f.denominator);
 }
 
 float round(Fraction const &f)
