@@ -216,14 +216,14 @@ Fraction abs(Fraction const &f)
     return simplify(result);
 }
 
-int ceil(Fraction const &f)
+float ceil(Fraction const &f)
 {
-    return roundf(f.numerator / f.denominator + 0.5);
+    return std::ceil(f.numerator / f.denominator);
 }
 
-int floor(Fraction const &f)
+float floor(Fraction const &f)
 {
-    return roundf(f.numerator / f.denominator - 0.5);
+    return floorf(f.numerator / f.denominator);
 }
 
 float round(Fraction const &f)

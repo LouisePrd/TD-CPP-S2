@@ -41,6 +41,6 @@ Fraction operator-(Fraction const& f, int const i);
 Fraction operator*(Fraction const& f, int const i);
 Fraction operator/(Fraction const& f, int const i);
 Fraction abs(Fraction const& f);
-int ceil(Fraction const& f);
-int floor(Fraction const& f);
+float ceil(Fraction const& f);
+float floor(Fraction const& f);
 float round(Fraction const& f);
