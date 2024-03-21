@@ -33,3 +33,14 @@ Fraction operator+=(Fraction &f1, Fraction const &f2);
 Fraction operator-=(Fraction &f1, Fraction const &f2);
 Fraction operator*=(Fraction &f1, Fraction const &f2);
 Fraction operator/=(Fraction &f1, Fraction const &f2);
+
+// Bonus
+Fraction operator+(Fraction const& f, int const i);
+Fraction operator+(int const i, Fraction const& f);
+Fraction operator-(Fraction const& f, int const i);
+Fraction operator*(Fraction const& f, int const i);
+Fraction operator/(Fraction const& f, int const i);
+Fraction abs(Fraction const& f);
+int ceil(Fraction const& f);
+int floor(Fraction const& f);
+float round(Fraction const& f);

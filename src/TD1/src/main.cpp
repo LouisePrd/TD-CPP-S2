@@ -42,5 +42,19 @@ int main()
     float d1{static_cast<float>(f3)};
     std::cout << "float(f3) = " << d1 << std::endl;
 
+    //Bonus
+    Fraction f4{5, 2};
+    int i{2};
+    std::cout << "f4 = " << f4 << " i = " << i << std::endl;
+    std::cout << "f4 + " << i << " = " << f4 + i << std::endl;
+    std::cout << i << " + f4 = " << i + f4 << std::endl;
+    std::cout << "f4 - " << i << " = " << f4 - i << std::endl;
+    std::cout << "f4 * " << i << " = " << f4 * i << std::endl;
+    std::cout << "f4 / " << i << " = " << f4 / i << std::endl;
+    std::cout << "Valeur absolue de f4 = " << abs(f4) << std::endl;
+    std::cout << "Arrondi supérieur de f4 = " << ceil(f4) << std::endl;
+    std::cout << "Arrondi inférieur de f4 = " << floor(f4) << std::endl;
+    std::cout << "Arrondi de f4 = " << round(f4) << std::endl;
+
     return 0;
 }

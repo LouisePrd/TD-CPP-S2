@@ -32,8 +32,7 @@ Fraction div(Fraction const &f1, Fraction const &f2)
 }
 
 // Operateur partie 1
-/*
-Fraction operator+(Fraction const& f1, Fraction const& f2)
+Fraction operator+(Fraction const &f1, Fraction const &f2)
 {
     return simplify({f1.numerator * f2.denominator + f2.numerator * f1.denominator,
                      f1.denominator * f2.denominator});
@@ -53,7 +52,6 @@ Fraction operator/(Fraction const &f1, Fraction const &f2)
 {
     return div(f1, f2);
 }
-*/
 
 std::ostream &operator<<(std::ostream &os, Fraction const &f1)
 {
@@ -163,4 +161,72 @@ float Fraction::to_float()
 Fraction::operator float() const
 {
     return static_cast<float>(numerator) / denominator;
+}
+
+// Bonus
+// Surchage des operateurs
+
+Fraction operator+(Fraction const &f, int const i)
+{
+    Fraction result{0, 0};
+    result.numerator = f.numerator + i * f.denominator;
+    result.denominator = f.denominator;
+    return simplify(result);
+}
+
+Fraction operator+(int const i, Fraction const &f)
+{
+    Fraction result{0, 0};
+    result.numerator = f.numerator + i * f.denominator;
+    result.denominator = f.denominator;
+    return simplify(result);
+}
+
+Fraction operator-(Fraction const &f, int const i)
+{
+    Fraction result{0, 0};
+    result.numerator = f.numerator - i * f.denominator;
+    result.denominator = f.denominator;
+    return simplify(result);
+}
+
+Fraction operator*(Fraction const &f, int const i)
+{
+    Fraction result{0, 0};
+    result.numerator = f.numerator * i;
+    result.denominator = f.denominator;
+    return simplify(result);
+}
+
+Fraction operator/(Fraction const &f, int const i)
+{
+    Fraction result{0, 0};
+    result.numerator = f.numerator;
+    result.denominator = f.denominator * i;
+    return simplify(result);
+}
+
+Fraction abs(Fraction const &f)
+{
+    Fraction result{0, 0};
+    int num = f.numerator;
+    int den = f.denominator;
+    result.numerator = std::abs(num);
+    result.denominator = std::abs(den);
+    return simplify(result);
+}
+
+int ceil(Fraction const &f)
+{
+    return roundf(f.numerator / f.denominator + 0.5);
+}
+
+int floor(Fraction const &f)
+{
+    return roundf(f.numerator / f.denominator - 0.5);
+}
+
+float round(Fraction const &f)
+{
+    return roundf(f.numerator / f.denominator);
 }
