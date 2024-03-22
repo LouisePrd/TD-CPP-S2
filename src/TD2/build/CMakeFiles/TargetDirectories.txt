@@ -1,0 +1,3 @@
+/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/build/CMakeFiles/main.dir
+/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/build/CMakeFiles/edit_cache.dir
+/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/build/CMakeFiles/rebuild_cache.dir
