@@ -1,8 +1,8 @@
 [
 {
-  "directory": "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/src\" -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/main.dir/src/main.cpp.o -c \"/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/src/main.cpp\"",
-  "file": "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/src/main.cpp",
+  "directory": "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD2/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD2/src\" -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/main.dir/src/main.cpp.o -c \"/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD2/src/main.cpp\"",
+  "file": "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD2/src/main.cpp",
   "output": "CMakeFiles/main.dir/src/main.cpp.o"
 }
 ]

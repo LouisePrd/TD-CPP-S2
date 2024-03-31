@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/build"
+			"value" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD2/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -491,7 +491,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/build/CMakeFiles/pkgRedirects"
+			"value" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD2/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -551,7 +551,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2"
+			"value" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD2"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1143,7 +1143,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/build"
+			"value" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD2/build"
 		},
 		{
 			"name" : "TD2_Project_IS_TOP_LEVEL",
@@ -1167,7 +1167,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2"
+			"value" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD2"
 		}
 	],
 	"kind" : "cache",

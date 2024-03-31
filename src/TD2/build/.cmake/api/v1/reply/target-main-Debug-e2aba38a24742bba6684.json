@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/bin/Debug/main"
+			"path" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD2/bin/Debug/main"
 		}
 	],
 	"backtrace" : 1,
@@ -79,7 +79,7 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/src"
+					"path" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD2/src"
 				}
 			],
 			"language" : "CXX",

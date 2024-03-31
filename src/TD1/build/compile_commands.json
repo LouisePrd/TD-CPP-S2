@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/src\" -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/main.dir/src/main.cpp.o -c \"/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/src/main.cpp\"",
+  "file": "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/src/main.cpp",
+  "output": "CMakeFiles/main.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/src\" -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/main.dir/src/fraction.cpp.o -c \"/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/src/fraction.cpp\"",
+  "file": "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/src/fraction.cpp",
+  "output": "CMakeFiles/main.dir/src/fraction.cpp.o"
+},
+{
+  "directory": "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/src\" -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/main.dir/src/utils.cpp.o -c \"/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/src/utils.cpp\"",
+  "file": "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/src/utils.cpp",
+  "output": "CMakeFiles/main.dir/src/utils.cpp.o"
+}
+]

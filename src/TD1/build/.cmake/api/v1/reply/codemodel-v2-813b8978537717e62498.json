@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "TD2_Project",
+					"name" : "TD1_Project",
 					"targetIndexes" : 
 					[
 						0
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "main::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-main-Debug-21e3b6404f855c2a9405.json",
+					"jsonFile" : "target-main-Debug-d8ffc9830870630d4c5b.json",
 					"name" : "main",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2/build",
-		"source" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD8/src/TD2"
+		"build" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1/build",
+		"source" : "/Users/louiseperidy/Desktop/IMAC/S2/Algo Prog/TD/TD-CPP-S2/src/TD1"
 	},
 	"version" : 
 	{
