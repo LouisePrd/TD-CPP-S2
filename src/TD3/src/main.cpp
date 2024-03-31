@@ -22,23 +22,39 @@ bool is_floating(std::string const &s)
     return true;
 }
 
-std::string npi_evaluate(std::vector<std::string> const &tokens)
+float npi_evaluate(std::vector<std::string> const &tokens)
 {
-    std::vector<std::string> stack;
+    std::vector<float> stack;
     for (std::string const &token : tokens)
     {
         if (is_floating(token)) // on regarde si nombre ou opérande
         {
-            stack.push_back(token);
+            stack.push_back(std::stof(token));
         }
-       /* else
+        else
         {
             float rightOperand = stack.back();
             stack.pop_back();
             float leftOperand = stack.back();
             stack.pop_back();
-            stack.push_back(leftOperand + rightOperand);
-        }*/
+            switch (token[0])
+            {
+            case '+':
+                stack.push_back(leftOperand + rightOperand);
+                break;
+            case '-':
+                stack.push_back(leftOperand - rightOperand);
+                break;
+            case '*':
+                stack.push_back(leftOperand * rightOperand);
+                break;
+            case '/':
+                stack.push_back(leftOperand / rightOperand);
+                break;
+            default:
+                break;
+            }
+        }
     }
     return stack.back();
 }
