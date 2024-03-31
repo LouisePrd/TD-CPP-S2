@@ -1,11 +1,11 @@
 #pragma once
 #include <iostream>
+#include <vector>
 
-struct Token
+enum class TokenType
 {
-    TokenType type;
-    float value;
-    Operator op;
+    OPERATOR,
+    OPERAND
 };
 
 enum class Operator
@@ -18,11 +18,16 @@ enum class Operator
     CLOSE_PAREN
 };
 
-enum class TokenType
+
+struct Token
 {
-    OPERATOR,
-    OPERAND
+    TokenType type;
+    float value;
+    Operator op;
 };
 
 Token make_token(float value);
 Token make_token(Operator op);
+std::vector<Token> tokenize(std::vector<std::string> const &words);
+bool is_floating(std::string const &s);
+float npi_evaluate(std::vector<Token> const& tokens);
