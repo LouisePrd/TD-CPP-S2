@@ -49,7 +49,7 @@ float npi_evaluate(std::vector<std::string> const &tokens)
     return stack.back();
 }
 
-size_t operator_precedence(Operator const op) // on donne la priorité des opérateurs
+size_t operator_precedence(Operator const op)
 {
     switch (op)
     {
@@ -68,46 +68,35 @@ size_t operator_precedence(Operator const op) // on donne la priorité des opér
 
 std::vector<Token> infix_to_npi_tokens(std::string const &expression)
 {
+    std::vector<Token> result;
     std::vector<Token> output;
-    std::vector<Token> numbers;
-    std::vector<Token> operators;
+    std::vector<Token> stackOperator;
 
-    output = tokenize(split_string(expression));
+    output = tokenize(split_string(expression)); // On tokenize l'expression
+    
     for (Token const &token : output)
     {
-        if (token.type != TokenType::OPERAND)
-        {
-            numbers.push_back(token);
-        }
+        if (token.type != TokenType::OPERATOR)
+            result.push_back(token);
         else
         {
-            switch (token.op)
-            {
-            case Operator::ADD:
-                operators.push_back(token);
-                break;
-            case Operator::SUB:
-                operators.push_back(token);
-                break;
-            case Operator::MUL:
-                operators.push_back(token);
-                break;
-            case Operator::DIV:
-                operators.push_back(token);
-                break;
-            default:
-                break;
-            }
+            if (operator_precedence(token.op) == 2)
+                result.push_back(token);
+            else
+                stackOperator.push_back(token);
         }
     }
-    operators.insert(operators.end(), numbers.begin(), numbers.end());
-    output = operators;
-    return output;
+    for (Token const &token : stackOperator)
+    {
+        std::cout << token.value << " ";
+    }
+    result.insert(result.end(), stackOperator.begin(), stackOperator.end());
+    return result;
 }
 
-void calculatriceNPI(std::vector<Token> const &tokens)
+void calculatriceNPI(std::vector<std::string> elements)
 {
-
+    std::vector<Token> tokens = infix_to_npi_tokens(elements[0]);
 }
 
 int main()
@@ -131,6 +120,6 @@ int main()
     std::cout << "Conversion en NPI : ";
     getline(std::cin, operation3);
     std::vector<std::string> elements3 = split_string(operation3);
-    calculatriceNPI(infix_to_npi_tokens(operation3));
+    calculatriceNPI(elements3);
     return 0;
 }
