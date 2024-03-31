@@ -69,8 +69,45 @@ size_t operator_precedence(Operator const op) // on donne la priorité des opér
 std::vector<Token> infix_to_npi_tokens(std::string const &expression)
 {
     std::vector<Token> output;
+    std::vector<Token> numbers;
+    std::vector<Token> operators;
+
     output = tokenize(split_string(expression));
+    for (Token const &token : output)
+    {
+        if (token.type != TokenType::OPERAND)
+        {
+            numbers.push_back(token);
+        }
+        else
+        {
+            switch (token.op)
+            {
+            case Operator::ADD:
+                operators.push_back(token);
+                break;
+            case Operator::SUB:
+                operators.push_back(token);
+                break;
+            case Operator::MUL:
+                operators.push_back(token);
+                break;
+            case Operator::DIV:
+                operators.push_back(token);
+                break;
+            default:
+                break;
+            }
+        }
+    }
+    operators.insert(operators.end(), numbers.begin(), numbers.end());
+    output = operators;
     return output;
+}
+
+void calculatriceNPI(std::vector<Token> const &tokens)
+{
+
 }
 
 int main()
@@ -94,6 +131,6 @@ int main()
     std::cout << "Conversion en NPI : ";
     getline(std::cin, operation3);
     std::vector<std::string> elements3 = split_string(operation3);
-    std::vector<Token> output = infix_to_npi_tokens(operation3);
+    calculatriceNPI(infix_to_npi_tokens(operation3));
     return 0;
 }
