@@ -15,7 +15,8 @@ enum class Operator
     MUL,
     DIV,
     OPEN_PAREN,
-    CLOSE_PAREN
+    CLOSE_PAREN,
+    PUISS
 };
 
 
@@ -26,6 +27,7 @@ struct Token
     Operator op;
 };
 
+std::string to_string(Operator op);
 Token make_token(float value);
 Token make_token(Operator op);
 std::vector<Token> tokenize(std::vector<std::string> const &words);

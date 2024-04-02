@@ -61,6 +61,12 @@ size_t operator_precedence(Operator const op)
         return 2;
     case Operator::DIV:
         return 2;
+    case Operator::OPEN_PAREN:
+        return 0;
+    case Operator::CLOSE_PAREN:
+        return 0;
+    case Operator::PUISS:
+        return 2;
     default:
         return 0;
     }
@@ -73,24 +79,45 @@ std::vector<Token> infix_to_npi_tokens(std::string const &expression)
     std::vector<Token> stackOperator;
 
     output = tokenize(split_string(expression)); // On tokenize l'expression
-    
+
     for (Token const &token : output)
     {
         if (token.type != TokenType::OPERATOR)
-            result.push_back(token);
+            result.push_back(token); // si c'est un nombre on l'ajoute directement
         else
         {
-            if (operator_precedence(token.op) == 2)
+            if (token.type == TokenType::OPERATOR && token.op == Operator::OPEN_PAREN)
+                stackOperator.push_back(token);
+            else if (token.type == TokenType::OPERATOR && token.op == Operator::CLOSE_PAREN)
+            {
+                while (stackOperator.back().op != Operator::OPEN_PAREN)
+                {
+                    result.push_back(stackOperator.back());
+                    stackOperator.pop_back();
+                }
+                stackOperator.pop_back();
+            }
+
+            if (operator_precedence(token.op) >= 2)
                 result.push_back(token);
             else
                 stackOperator.push_back(token);
         }
     }
+
     for (Token const &token : stackOperator)
     {
-        std::cout << token.value << " ";
+        result.push_back(token);
     }
-    result.insert(result.end(), stackOperator.begin(), stackOperator.end());
+
+    for (Token const &token : result)
+    {
+        if (token.type == TokenType::OPERATOR)
+            std::cout << to_string(token.op) << " ";
+        else
+            std::cout << token.value << " ";
+    }
+
     return result;
 }
 
@@ -120,6 +147,6 @@ int main()
     std::cout << "Conversion en NPI : ";
     getline(std::cin, operation3);
     std::vector<std::string> elements3 = split_string(operation3);
-    calculatriceNPI(elements3);
+    infix_to_npi_tokens(operation3);
     return 0;
 }

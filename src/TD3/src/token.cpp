@@ -58,6 +58,10 @@ std::vector<Token> tokenize(std::vector<std::string> const &words)
             {
                 tokens.push_back(make_token(Operator::CLOSE_PAREN));
             }
+            else if (words[i] == "^")
+            {
+                tokens.push_back(make_token(Operator::PUISS));
+            }
         }
     }
     return tokens;
@@ -98,4 +102,26 @@ float npi_evaluate(std::vector<Token> const& tokens)
         }
     }
     return stack.back();
+}
+
+std::string to_string(Operator op) {
+    switch (op)
+    {
+    case Operator::ADD:
+        return "+";
+    case Operator::SUB:
+        return "-";
+    case Operator::MUL:
+        return "*";
+    case Operator::DIV:
+        return "/";
+    case Operator::OPEN_PAREN:
+        return "(";
+    case Operator::CLOSE_PAREN:
+        return ")";
+    case Operator::PUISS:
+        return "^";
+    default:
+        return "";
+    }
 }
