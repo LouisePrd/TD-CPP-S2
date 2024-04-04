@@ -84,6 +84,7 @@ std::vector<Token> infix_to_npi_tokens(std::string const &expression)
     {
         if (token.type != TokenType::OPERATOR)
             result.push_back(token);
+
         else
         {
             if (token.op == Operator::OPEN_PAREN)
@@ -115,27 +116,29 @@ std::vector<Token> infix_to_npi_tokens(std::string const &expression)
         }
     }
 
-    // on dépile les opérateurs restants
     while (!stackOperator.empty())
     {
         result.push_back(stackOperator.back());
         stackOperator.pop_back();
     }
 
-    for (Token const &token : result)
-    {
-        if (token.type == TokenType::OPERATOR)
-            std::cout << to_string(token.op) << " ";
-        else
-            std::cout << token.value << " ";
-    }
-
     return result;
 }
 
-void calculatriceNPI(std::vector<std::string> elements)
+void calculatriceNPI(std::string const &expression)
 {
-    std::vector<Token> tokens = infix_to_npi_tokens(elements[0]);
+
+    std::vector<Token> tokens = infix_to_npi_tokens(expression);
+    std::cout << "Notation NPI :";
+    for (Token const &token : tokens)
+    {
+        if (token.type == TokenType::OPERAND)
+            std::cout << token.value << " ";
+        else
+            std::cout << to_string(token.op) << " ";
+    }
+    std::cout << std::endl;
+    std::cout << "Resultat : " << npi_evaluate(split_string(expression)) << std::endl;
 }
 
 int main()
@@ -156,9 +159,8 @@ int main()
 
     //  Exercice 3
     std::string operation3;
-    std::cout << "Conversion en NPI : ";
+    std::cout << "Notation infixe : ";
     getline(std::cin, operation3);
-    std::vector<std::string> elements3 = split_string(operation3);
-    infix_to_npi_tokens(operation3);
+    calculatriceNPI(operation3);
     return 0;
 }
