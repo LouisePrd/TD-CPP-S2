@@ -5,9 +5,8 @@
 #include <algorithm>
 #include <numeric>
 
-void randomsIterator(std::vector<int> randoms)
+void beginAndEnd(std::vector<int> randoms)
 {
-    // Utilisation des itérateurs end et begin
     std::vector<int>::iterator end_iterator{randoms.end()};
     std::cout << "Affichage des randoms : ";
     for (std::vector<int>::iterator it{randoms.begin()}; it != end_iterator; ++it)
@@ -37,7 +36,6 @@ void findAndCount(std::vector<int> randoms)
 
 void sortMethod(std::vector<int> randoms)
 {
-    // Utilisation de sort
     std::sort(randoms.begin(), randoms.end());
     std::cout << "Tri des randoms : ";
     for (std::vector<int>::size_type i = 0; i < randoms.size(); i++)
@@ -49,16 +47,34 @@ void sortMethod(std::vector<int> randoms)
 
 void accumulation(std::vector<int> randoms)
 {
-    // Utilisation de accumulate
     int sum{std::accumulate(randoms.begin(), randoms.end(), 0, [](int acc, int current_element)
                             { return acc + current_element; })};
     std::cout << "Somme des randoms : " << sum << std::endl;
 }
 
+auto const is_space = [](char letter)
+{
+    return letter == ' ';
+};
+
+int findNbLettres(std::string const &phrase)
+{
+    int nbLettres{0};
+    int nbLettresMot2{0};
+    auto it{std::find(phrase.begin(), phrase.end(), ' ')};
+
+    if (it != phrase.end())
+        nbLettres = std::distance(phrase.begin(), it);
+
+    std::cout << "Nombre de lettres du premier mot : " << nbLettres << std::endl;
+
+    return nbLettres;
+}
+
 int main()
 {
     // Exercice 1 (Vector and Algorithm)
-    std::vector<int> randoms;
+    /*std::vector<int> randoms;
     std::cout << "Generation de randoms : ";
     for (int i = 0; i < 10; i++)
     {
@@ -66,11 +82,13 @@ int main()
         std::cout << randoms[i] << " ";
     }
     std::cout << std::endl;
-
-    randomsIterator(randoms);
+    beginAndEnd(randoms);
     findAndCount(randoms);
     sortMethod(randoms);
-    accumulation(randoms);
+    accumulation(randoms);*/
+
+    // Exercice 2 (String)
+    findNbLettres("je suis une phrase");
 
     return 0;
 }
