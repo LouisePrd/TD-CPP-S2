@@ -137,8 +137,18 @@ void calculatriceNPI(std::string const &expression)
         else
             std::cout << to_string(token.op) << " ";
     }
+    
+    std::vector<std::string> npi_tokens;
+    for (Token const &token : tokens)
+    {
+        if (token.type == TokenType::OPERAND)
+            npi_tokens.push_back(std::to_string(token.value));
+        else
+            npi_tokens.push_back(to_string(token.op));
+    }
+
     std::cout << std::endl;
-    std::cout << "Resultat : " << npi_evaluate(split_string(expression)) << std::endl;
+    std::cout << "Resultat : " << npi_evaluate(npi_tokens) << std::endl;
 }
 
 int main()
