@@ -66,7 +66,7 @@ size_t operator_precedence(Operator const op)
     case Operator::CLOSE_PAREN:
         return 0;
     case Operator::PUISS:
-        return 2;
+        return 3;
     default:
         return 0;
     }
@@ -78,17 +78,20 @@ std::vector<Token> infix_to_npi_tokens(std::string const &expression)
     std::vector<Token> output;
     std::vector<Token> stackOperator;
 
-    output = tokenize(split_string(expression)); // On tokenize l'expression
+    output = tokenize(split_string(expression));
 
     for (Token const &token : output)
     {
         if (token.type != TokenType::OPERATOR)
-            result.push_back(token); // si c'est un nombre on l'ajoute directement
+            result.push_back(token);
         else
         {
-            if (token.type == TokenType::OPERATOR && token.op == Operator::OPEN_PAREN)
+            if (token.op == Operator::OPEN_PAREN)
+            {
                 stackOperator.push_back(token);
-            else if (token.type == TokenType::OPERATOR && token.op == Operator::CLOSE_PAREN)
+            }
+
+            else if (token.op == Operator::CLOSE_PAREN)
             {
                 while (stackOperator.back().op != Operator::OPEN_PAREN)
                 {
@@ -98,16 +101,25 @@ std::vector<Token> infix_to_npi_tokens(std::string const &expression)
                 stackOperator.pop_back();
             }
 
-            if (operator_precedence(token.op) >= 2)
-                result.push_back(token);
             else
-                stackOperator.push_back(token);
+            {
+                if (!stackOperator.empty() && operator_precedence(stackOperator.back().op) >= operator_precedence(token.op))
+                {
+                    result.push_back(stackOperator.back());
+                    stackOperator.pop_back();
+                    stackOperator.push_back(token);
+                } else {
+                    stackOperator.push_back(token);
+                }
+            }
         }
     }
 
-    for (Token const &token : stackOperator)
+    // on dépile les opérateurs restants
+    while (!stackOperator.empty())
     {
-        result.push_back(token);
+        result.push_back(stackOperator.back());
+        stackOperator.pop_back();
     }
 
     for (Token const &token : result)
