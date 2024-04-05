@@ -117,6 +117,20 @@ bool palindrome(std::string const &str)
     return true;
 }
 
+int lambda(std::vector<int> elements)
+{
+    for (unsigned int i = 0; i < elements.size(); i++)
+    {
+        elements[i] = elements[i] * elements[i];
+    }
+
+    int sum{std::accumulate(elements.begin(), elements.end(), 0, [](int acc, int current_element)
+                            { return acc + current_element; })};
+    
+    std::cout << "Somme des elements : " << sum << std::endl;
+    return sum;
+}
+
 int main()
 {
     // Exercice 1 (Vector and Algorithm)
@@ -139,8 +153,12 @@ int main()
     split_string(phrase);*/
 
     // Exercice 3 (Palindrome)
-    std::string phrase("phrase");
-    std::cout << "Phrase palindrome : " << std::boolalpha << palindrome(phrase) << std::endl;
+    /*std::string phrase("phrase");
+    std::cout << "Phrase palindrome : " << std::boolalpha << palindrome(phrase) << std::endl;*/
+
+    // Pour aller plus loin (lambda)
+    std::vector<int> elements = {2, 3};
+    lambda(elements);
 
     return 0;
 }
