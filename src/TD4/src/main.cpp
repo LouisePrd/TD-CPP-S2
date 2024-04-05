@@ -76,7 +76,7 @@ int findFirstWord(std::string const &phrase)
     return nbLettres;
 }
 
-std::vector<std::string> split_string(std::string const& str)
+std::vector<std::string> split_string(std::string const &str)
 {
     std::vector<std::string> mots;
     int itCourant{0};
@@ -98,6 +98,25 @@ std::vector<std::string> split_string(std::string const& str)
     return mots;
 }
 
+bool palindrome(std::string const &str)
+{
+    // std::string::const_iterator begin_iterator { str.cbegin() };
+    auto begin_iterator{str.begin()};
+    auto end_iterator{str.end()};
+
+    for (unsigned int i = 0; i < str.size() / 2; i++)
+    {
+        end_iterator--;
+        if (*(begin_iterator) != *(end_iterator))
+        {
+            return false;
+        }
+        begin_iterator++;
+    }
+
+    return true;
+}
+
 int main()
 {
     // Exercice 1 (Vector and Algorithm)
@@ -115,11 +134,13 @@ int main()
     accumulation(randoms);*/
 
     // Exercice 2 (String)
-    std::string phrase{"je suis une phrase"};
+    /*std::string phrase("je suis une phrase");
     findFirstWord(phrase);
-    split_string(phrase);
+    split_string(phrase);*/
 
-    //Exercice 3 (Palindrome)
+    // Exercice 3 (Palindrome)
+    std::string phrase("phrase");
+    std::cout << "Phrase palindrome : " << std::boolalpha << palindrome(phrase) << std::endl;
 
     return 0;
 }
