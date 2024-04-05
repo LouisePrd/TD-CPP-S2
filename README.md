@@ -12,4 +12,5 @@ https://dsmte.github.io/Learn--cpp_programming/TDs
 - TD3 - Structures de données : ✅
 - TD4 - Déduction de type et bibliothèque standard<br>
   ex 1 : ✅ <br>
-  ex 2, 3 et bonus : en cours
+  ex 2 : ✅ <br>
+  ex 3 et bonus : en cours
