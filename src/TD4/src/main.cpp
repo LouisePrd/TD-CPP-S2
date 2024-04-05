@@ -57,18 +57,45 @@ auto const is_space = [](char letter)
     return letter == ' ';
 };
 
-int findNbLettres(std::string const &phrase)
+int findFirstWord(std::string const &phrase)
 {
     int nbLettres{0};
-    int nbLettresMot2{0};
+
     auto it{std::find(phrase.begin(), phrase.end(), ' ')};
-
     if (it != phrase.end())
+    {
         nbLettres = std::distance(phrase.begin(), it);
-
-    std::cout << "Nombre de lettres du premier mot : " << nbLettres << std::endl;
+    }
+    // ou avec find if :
+    /*auto it{std::find_if(phrase.begin(), phrase.end(), is_space)};
+    if (it != phrase.end())
+    {
+        nbLettres = std::distance(phrase.begin(), it);
+    }*/
 
     return nbLettres;
+}
+
+std::vector<std::string> split_string(std::string const& str)
+{
+    std::vector<std::string> mots;
+    int itCourant{0};
+
+    auto it{std::find(str.begin(), str.end(), ' ')};
+    while (it != str.end())
+    {
+        std::string motCourant(str.begin() + itCourant, it);
+        itCourant = std::distance(str.begin(), it);
+        it = std::find(it + 1, str.end(), ' ');
+        mots.push_back(motCourant);
+        if (it == str.end())
+        {
+            std::string motCourant(str.begin() + itCourant, str.end());
+            mots.push_back(motCourant);
+        }
+    }
+
+    return mots;
 }
 
 int main()
@@ -88,7 +115,11 @@ int main()
     accumulation(randoms);*/
 
     // Exercice 2 (String)
-    findNbLettres("je suis une phrase");
+    std::string phrase{"je suis une phrase"};
+    findFirstWord(phrase);
+    split_string(phrase);
+
+    //Exercice 3 (Palindrome)
 
     return 0;
 }
