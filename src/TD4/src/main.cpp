@@ -114,7 +114,10 @@ bool palindrome(std::string const &str)
         begin_iterator++;
     }
 
-    return true;
+    // or
+    // bool equal{std::equal(str.begin(), str.begin() + str.size() / 2, str.rbegin())};
+
+    return equal;
 }
 
 int lambda(std::vector<int> elements)
