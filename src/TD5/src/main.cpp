@@ -34,8 +34,8 @@ size_t folding_string_ordered_hash(std::string const &s, size_t max)
     return hash % max;
 }
 
-size_t polynomial_rolling_hash(const std::string& s, size_t p, size_t m)
-{   
+size_t polynomial_rolling_hash(const std::string &s, size_t p, size_t m)
+{
     int power = 1;
     size_t hash = 0;
 
@@ -46,53 +46,81 @@ size_t polynomial_rolling_hash(const std::string& s, size_t p, size_t m)
         {
             power *= p; // p^i
         }
-        hash += (ASCII * power);  // s[i]× p^i
-        hash = hash % m; // s[i]× p^i mod m
+        hash += (ASCII * power); // s[i]× p^i
+        hash = hash % m;         // s[i]× p^i mod m
     }
 
     return hash;
 }
 
+// ROBOTS
 
-// ROBOT
-
-std::string random_name(size_t size) {
-    std::string name {""};
-    // Optimisation pour que la chaîne de caractère ne réalloue pas de la mémoire à chaque caractère ajouté
-    // https://cplusplus.com/reference/string/string/reserve/
+std::string random_name(size_t size)
+{
+    std::string name{""};
     name.reserve(size);
-    for(size_t i {0}; i < size; ++i) {
+    for (size_t i{0}; i < size; ++i)
+    {
         name.push_back('A' + std::rand() % 26);
     }
     return name;
 }
 
-std::vector<std::pair<std::string, float>> get_robots_fix(size_t size) {
-    std::vector<std::pair<std::string, float>> robots_fix {};
-    // Meme optimisation que dans random_name()
-    // https://cplusplus.com/reference/vector/vector/reserve/
+std::vector<std::pair<std::string, float>> get_robots_fix(size_t size)
+{
+    std::vector<std::pair<std::string, float>> robots_fix{};
     robots_fix.reserve(size);
-    for (size_t i {0}; i < size; ++i) {
-        // random name 
-        std::string robotName { random_name(2) };
+    for (size_t i{0}; i < size; ++i)
+    {
+        std::string robotName{random_name(2)}; // random name
         // random cost
-        float cost {static_cast<float>(std::rand()) / RAND_MAX * 1000.0f};
+        float cost{static_cast<float>(std::rand()) / RAND_MAX * 1000.0f};
         robots_fix.push_back(std::make_pair(robotName, cost));
     }
     return robots_fix;
 }
 
-std::unordered_map<std::string, std::vector<float>> robots_fixes_map(std::vector<std::pair<std::string, float>> const& robots_fixes) {
-    std::unordered_map<std::string, std::vector<float>> robots_fixes_map {};
+std::unordered_map<std::string, std::vector<float>> robots_fixes_map(std::vector<std::pair<std::string, float>> const &robots_fixes)
+{
+    std::unordered_map<std::string, std::vector<float>> robots_fixes_map{};
+
+    for (unsigned long i = 0; i < robots_fixes.size(); i++)
+    {
+        auto nameRobot = robots_fixes_map.find(robots_fixes[i].first); // On cherche s'il existe deja
+        if (nameRobot != robots_fixes_map.end()) // S'il existe on ajoute réparation
+        {
+            robots_fixes_map[robots_fixes[i].first].push_back(robots_fixes[i].second);
+            std::cout << "Robot :" << robots_fixes[i].first << std::endl;
+            std::cout << "Réparations : ";
+            for (unsigned long j = 0; j < robots_fixes_map[robots_fixes[i].first].size(); j++)
+            {
+                std::cout << robots_fixes_map[robots_fixes[i].first][j] << ", ";
+            }
+            std::cout << std::endl;}
+        else
+        {
+            robots_fixes_map[robots_fixes[i].first] = {robots_fixes[i].second}; // S'il n'existe pas, on le crée avec sa réparation
+        }
+    }
+
     return robots_fixes_map;
+}
+
+float sumReparation(std::unordered_map<std::string, std::vector<float>> robots_fixes_map, std::string robotName)
+{
+    float sum = 0;
+    for (unsigned long i = 0; i < robots_fixes_map[robotName].size(); i++)
+    {
+        sum += robots_fixes_map[robotName][i];
+    }
+    return sum;
 }
 
 int main()
 {
     // Exercice 1 (fonction de hachage)
     // Question 1
-    std::string str = "Hello world";
-    folding_string_hash(str, 1024);
+    folding_string_hash("Hello world", 1024);
     // Question 2
     folding_string_ordered_hash("abc", 1024);
     folding_string_ordered_hash("cab", 1024);
@@ -101,9 +129,8 @@ int main()
     polynomial_rolling_hash("cab", 31, 1024);
 
     // Exercice 2 (Réparation de Robots)
-    std::cout << "Test nom robot : " << random_name(2) << std::endl;
-    std::vector<std::pair<std::string, float>> robots_fix = get_robots_fix(10);
-    std::unordered_map<std::string, std::vector<float>> robots_fixes = robots_fixes_map(robots_fix);
+    std::unordered_map<std::string, std::vector<float>> robots_fixes = robots_fixes_map(get_robots_fix(676));
+    std::cout << "Réparations du robot YM : " << sumReparation(robots_fixes, "YM") << std::endl; // Robot YM trouve 509.626 pour réparations 423.845, 17.5173, 68.2637,
 
     return 0;
 }
