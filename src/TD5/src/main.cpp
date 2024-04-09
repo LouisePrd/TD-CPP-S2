@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_map>
 #include <cstdlib>
+#include "card.hpp"
 
 size_t folding_string_hash(std::string const &s, size_t max)
 {
@@ -87,19 +88,20 @@ std::unordered_map<std::string, std::vector<float>> robots_fixes_map(std::vector
     for (unsigned long i = 0; i < robots_fixes.size(); i++)
     {
         auto nameRobot = robots_fixes_map.find(robots_fixes[i].first); // On cherche s'il existe deja
-        if (nameRobot != robots_fixes_map.end()) // S'il existe on ajoute réparation
+        if (nameRobot != robots_fixes_map.end())
         {
             robots_fixes_map[robots_fixes[i].first].push_back(robots_fixes[i].second);
-            std::cout << "Robot :" << robots_fixes[i].first << std::endl;
+            /*std::cout << "Robot :" << robots_fixes[i].first << std::endl;
             std::cout << "Réparations : ";
             for (unsigned long j = 0; j < robots_fixes_map[robots_fixes[i].first].size(); j++)
             {
                 std::cout << robots_fixes_map[robots_fixes[i].first][j] << ", ";
             }
-            std::cout << std::endl;}
+            std::cout << std::endl;*/
+        }
         else
         {
-            robots_fixes_map[robots_fixes[i].first] = {robots_fixes[i].second}; // S'il n'existe pas, on le crée avec sa réparation
+            robots_fixes_map[robots_fixes[i].first] = {robots_fixes[i].second};
         }
     }
 
@@ -132,5 +134,8 @@ int main()
     std::unordered_map<std::string, std::vector<float>> robots_fixes = robots_fixes_map(get_robots_fix(676));
     std::cout << "Réparations du robot YM : " << sumReparation(robots_fixes, "YM") << std::endl; // Robot YM trouve 509.626 pour réparations 423.845, 17.5173, 68.2637,
 
+    // Exercice 3 (hash sur une structure)
+    Card c1{CardKind::Heart, CardValue::Ace};
+    c1.hashCard(c1, 1024);
     return 0;
 }
