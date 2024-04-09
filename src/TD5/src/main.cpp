@@ -132,10 +132,21 @@ int main()
 
     // Exercice 2 (Réparation de Robots)
     std::unordered_map<std::string, std::vector<float>> robots_fixes = robots_fixes_map(get_robots_fix(676));
-    std::cout << "Réparations du robot YM : " << sumReparation(robots_fixes, "YM") << std::endl; // Robot YM trouve 509.626 pour réparations 423.845, 17.5173, 68.2637,
+    sumReparation(robots_fixes, "YM"); // Robot YM trouve 509.626 pour réparations 423.845, 17.5173, 68.2637
+    //std::cout << "Réparations du robot YM : " << sumReparation(robots_fixes, "YM") << std::endl; 
 
     // Exercice 3 (hash sur une structure)
-    Card c1{CardKind::Heart, CardValue::Ace};
-    c1.hashCard(c1, 1024);
+    Card c1{CardKind::Heart, CardValue::Two};
+    Card c2{CardKind::Heart, CardValue::Three};
+    Card c3{CardKind::Diamond, CardValue::Two};
+    Card c4{CardKind::Diamond, CardValue::Three};
+    Card c5{CardKind::Club, CardValue::Two};
+    Card c6{CardKind::Club, CardValue::Three};
+    c1.hashCard(1024);
+    c2.hashCard(1024);
+    c3.hashCard(1024);
+    c4.hashCard(1024);
+    c5.hashCard(1024);
+    c6.hashCard(1024);
     return 0;
 }

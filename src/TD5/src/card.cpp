@@ -66,11 +66,9 @@ int addValue(Card const &c)
     }
 }
 
-int hashCard(Card const &c, size_t max)
+int Card::hashCard(size_t max)
 {
-    int hash = 0;
-    int value = addValue(c);
-    std::cout << "value: " << value << std::endl;
+    int hash = (static_cast<int>(kind) + addValue(*this)) % max;
     
     return hash;
 }

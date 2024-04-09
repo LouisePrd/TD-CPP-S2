@@ -35,7 +35,7 @@ struct Card
     CardKind kind;
     CardValue value;
 
-    int hashCard(Card const &c, size_t max);
+    int hashCard(size_t max);
 };
 
 int addValue(Card const &c);
