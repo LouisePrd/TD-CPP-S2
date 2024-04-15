@@ -27,10 +27,39 @@ size_t Card::hash() const
     size_t hash = 0;
     int valueInt = static_cast<int>(Card::value);
     int kindInt = static_cast<int>(Card::kind);
-    hash = valueInt * 4 + kindInt;
-
-
+    hash = valueInt * 4 + kindInt + 1;
     std::cout << hash << std::endl;
 
     return hash;
+}
+
+std::string card_name(Card const& card) {
+    std::string name {};
+
+    unsigned int card_value {(static_cast<unsigned int>(card.value)+2) % 14};
+
+    if (card_value < 10) {
+        name += '0' + card_value;
+    }else if (card_value == 10) {
+        name += "10";
+    }else if (card_value == 11) {
+        name += 'V';
+    }else if (card_value == 12) {
+        name += 'Q';
+    }else if (card_value == 13) {
+        name += 'K';
+    }
+
+    name += " of ";
+
+    if (card.kind == CardKind::Heart) {
+        name += "Heart";
+    }else if (card.kind == CardKind::Diamond) {
+        name += "Diamond";
+    }else if (card.kind == CardKind::Club) {
+        name += "Club";
+    }else if (card.kind == CardKind::Spade) {
+        name += "Spade";
+    }
+    return name;
 }

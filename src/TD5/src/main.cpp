@@ -143,31 +143,36 @@ int main()
     polynomial_rolling_hash("abc", 31, 1024);
     polynomial_rolling_hash("cab", 31, 1024);
 
+
     // Exercice 2 (Réparation de Robots)
     std::unordered_map<std::string, std::vector<float>> robots_fixes = robots_fixes_map(get_robots_fix(676));
     sumReparation(robots_fixes, "YM"); // Robot YM trouve 509.626 pour réparations 423.845, 17.5173, 68.2637
     //std::cout << "Réparations du robot YM : " << sumReparation(robots_fixes, "YM") << std::endl; 
 
+
     // Exercice 3 (hash sur une structure)
-    Card c1{CardKind::Heart, CardValue::Two};
-    Card c2{CardKind::Heart, CardValue::Three};
-    Card c3{CardKind::Heart, CardValue::Four};
-    Card c4{CardKind::Heart, CardValue::Five};
-    Card c5{CardKind::Heart, CardValue::Six};
-    Card c6{CardKind::Heart, CardValue::Seven};
-    c1.hash();
-    c2.hash();
-    c3.hash();
-    c4.hash();
-    c5.hash();
-    c6.hash();
+    Card h2{CardKind::Heart, CardValue::Two};
+    Card sAce {CardKind::Spade, CardValue::Ace};
+    h2.hash();
+    sAce.hash();
     
-    size_t const size = 52;
+    size_t const size = 100;
     std::vector<Card> cards = get_cards(size);
-    for (Card c : cards)
+    std::unordered_map<size_t, size_t> cards_count;
+    /*for (Card c : cards)
     {
-        //std::cout << c.hash() << std::endl;
+        auto currentCard = cards_count.find(c.hash());
+        if (currentCard != cards_count.end())
+            cards_count[c.hash()]++;
+        else
+            cards_count[c.hash()] = cards_count.size() + 1;
     }
+
+    for (auto const &pair : cards_count)
+    {
+        Card findCard = cards[pair.first];
+        //std::cout << "Card : " << card_name(findCard) << " avec " << pair.second << " occurences" << std::endl;
+    }*/
 
     
     return 0;

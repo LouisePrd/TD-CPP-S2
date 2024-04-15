@@ -41,4 +41,4 @@ struct Card
 };
 
 bool operator==(Card const &c1, Card const &c2);
-std::vector<Card> get_cards(size_t const size);
+std::string card_name(Card const& card);
