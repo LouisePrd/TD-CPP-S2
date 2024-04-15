@@ -4,6 +4,8 @@
 #include <string>
 #include <unordered_map>
 #include <cstdlib>
+#include <map>
+
 
 enum class CardKind
 {
@@ -34,9 +36,9 @@ struct Card
 {
     CardKind kind;
     CardValue value;
-
-    int hashCard(size_t max);
+    
+    size_t hash() const;
 };
 
-int addValue(Card const &c);
 bool operator==(Card const &c1, Card const &c2);
+std::vector<Card> get_cards(size_t const size);

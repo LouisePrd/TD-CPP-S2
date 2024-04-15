@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <cstdlib>
 #include "card.hpp"
+#include <functional>
 
 size_t folding_string_hash(std::string const &s, size_t max)
 {
@@ -118,6 +119,18 @@ float sumReparation(std::unordered_map<std::string, std::vector<float>> robots_f
     return sum;
 }
 
+std::vector<Card> get_cards(size_t const size) {
+    std::vector<Card> cards;
+    cards.reserve(size);
+    for (size_t i {0}; i < size; ++i) {
+        CardKind kind = static_cast<CardKind>(rand() % 4);
+        CardValue value = static_cast<CardValue>(rand() % 13);
+        Card card = {kind, value};
+        cards.emplace_back(card);
+    }
+    return cards;
+}
+
 int main()
 {
     // Exercice 1 (fonction de hachage)
@@ -138,15 +151,24 @@ int main()
     // Exercice 3 (hash sur une structure)
     Card c1{CardKind::Heart, CardValue::Two};
     Card c2{CardKind::Heart, CardValue::Three};
-    Card c3{CardKind::Diamond, CardValue::Two};
-    Card c4{CardKind::Diamond, CardValue::Three};
-    Card c5{CardKind::Club, CardValue::Two};
-    Card c6{CardKind::Club, CardValue::Three};
-    c1.hashCard(1024);
-    c2.hashCard(1024);
-    c3.hashCard(1024);
-    c4.hashCard(1024);
-    c5.hashCard(1024);
-    c6.hashCard(1024);
+    Card c3{CardKind::Heart, CardValue::Four};
+    Card c4{CardKind::Heart, CardValue::Five};
+    Card c5{CardKind::Heart, CardValue::Six};
+    Card c6{CardKind::Heart, CardValue::Seven};
+    c1.hash();
+    c2.hash();
+    c3.hash();
+    c4.hash();
+    c5.hash();
+    c6.hash();
+    
+    size_t const size = 52;
+    std::vector<Card> cards = get_cards(size);
+    for (Card c : cards)
+    {
+        //std::cout << c.hash() << std::endl;
+    }
+
+    
     return 0;
 }

@@ -3,8 +3,8 @@
 #include <string>
 #include <unordered_map>
 #include <cstdlib>
-#include "card.hpp"
 #include <map>
+#include "card.hpp"
 
 bool operator==(Card const &c1, Card const &c2)
 {
@@ -14,61 +14,23 @@ bool operator==(Card const &c1, Card const &c2)
     }
 }
 
-
-// oui je suis en roue libre, ce switch est trop douteux 🥸
-int addValue(Card const &c)
+size_t Card::hash() const
 {
-    CardValue value = c.value;
-    switch (value)
-    {
-    case CardValue::Two:
-        return 2;
-        break;
-    case CardValue::Three:
-        return 3;
-        break;
-    case CardValue::Four:
-        return 4;
-        break;
-    case CardValue::Five:
-        return 5;
-        break;
-    case CardValue::Six:
-        return 6;
-        break;
-    case CardValue::Seven:
-        return 7;
-        break;
-    case CardValue::Eight:
-        return 8;
-        break;
-    case CardValue::Nine:
-        return 9;
-        break;
-    case CardValue::Ten:
-        return 10;
-        break;
-    case CardValue::Jack:
-        return 11;
-        break;
-    case CardValue::Queen:
-        return 12;
-        break;
-    case CardValue::King:
-        return 13;
-        break;
-    case CardValue::Ace:
-        return 14;
-        break;
-    default:
-        return 0;
-        break;
-    }
-}
+    // Question 2
+    //int valueInt = static_cast<int>(Card::value);
+    //int kindInt = static_cast<int>(Card::kind);
+    //std::string concat = std::to_string(valueInt) + std::to_string(kindInt);
+    //size_t hash = stoi(concat);
+    //std::cout << hash << std::endl;
 
-int Card::hashCard(size_t max)
-{
-    int hash = (static_cast<int>(kind) + addValue(*this)) % max;
-    
+    // Question 3
+    size_t hash = 0;
+    int valueInt = static_cast<int>(Card::value);
+    int kindInt = static_cast<int>(Card::kind);
+    hash = valueInt * 4 + kindInt;
+
+
+    std::cout << hash << std::endl;
+
     return hash;
 }
