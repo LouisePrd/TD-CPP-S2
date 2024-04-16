@@ -11,3 +11,4 @@ https://dsmte.github.io/Learn--cpp_programming/TDs
 - TD3 - Structures de données : ✅
 - TD4 - Déduction de type et bibliothèque standard : ✅
 - TD5 - Hachage et tableaux associatifs : ✅
+- TD6 - Arbres binaires de recherche : en cours
