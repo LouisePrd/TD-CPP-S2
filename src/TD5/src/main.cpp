@@ -119,10 +119,12 @@ float sumReparation(std::unordered_map<std::string, std::vector<float>> robots_f
     return sum;
 }
 
-std::vector<Card> get_cards(size_t const size) {
+std::vector<Card> get_cards(size_t const size)
+{
     std::vector<Card> cards;
     cards.reserve(size);
-    for (size_t i {0}; i < size; ++i) {
+    for (size_t i{0}; i < size; ++i)
+    {
         CardKind kind = static_cast<CardKind>(rand() % 4);
         CardValue value = static_cast<CardValue>(rand() % 13);
         Card card = {kind, value};
@@ -147,33 +149,34 @@ int main()
     // Exercice 2 (Réparation de Robots)
     std::unordered_map<std::string, std::vector<float>> robots_fixes = robots_fixes_map(get_robots_fix(676));
     sumReparation(robots_fixes, "YM"); // Robot YM trouve 509.626 pour réparations 423.845, 17.5173, 68.2637
-    //std::cout << "Réparations du robot YM : " << sumReparation(robots_fixes, "YM") << std::endl; 
+    std::cout << "Réparations du robot YM : " << sumReparation(robots_fixes, "YM") << std::endl;
 
 
     // Exercice 3 (hash sur une structure)
     Card h2{CardKind::Heart, CardValue::Two};
-    Card sAce {CardKind::Spade, CardValue::Ace};
-    h2.hash();
-    sAce.hash();
-    
+    Card sAce{CardKind::Spade, CardValue::Ace};
+
     size_t const size = 100;
     std::vector<Card> cards = get_cards(size);
     std::unordered_map<size_t, size_t> cards_count;
-    /*for (Card c : cards)
+    for (Card c : cards)
     {
         auto currentCard = cards_count.find(c.hash());
         if (currentCard != cards_count.end())
+        {
             cards_count[c.hash()]++;
+        }
         else
-            cards_count[c.hash()] = cards_count.size() + 1;
+        {
+            cards_count[c.hash()] = 1;
+        }
     }
 
     for (auto const &pair : cards_count)
     {
         Card findCard = cards[pair.first];
-        //std::cout << "Card : " << card_name(findCard) << " avec " << pair.second << " occurences" << std::endl;
-    }*/
+        std::cout << "Card : " << card_name(findCard) << " avec " << pair.second << " occurences" << std::endl;
+    }
 
-    
     return 0;
 }
