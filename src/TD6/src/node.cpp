@@ -43,10 +43,6 @@ void Node::insert(int value)
 
 int Node::height() const
 {
-    int heigh;
-    while (left != nullptr)
-    {
-        heigh++;
-    }
+    int heigh = 0;
     return heigh;
 }
