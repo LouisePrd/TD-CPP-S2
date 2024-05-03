@@ -36,13 +36,44 @@ bool Node::is_leaf() const
 void Node::insert(int value)
 {
     if (value < this->value)
+    {
+        if (this->left == nullptr){
         left = create_node(value);
+        std::cout << "Inséré à gauche" << std::endl;
+        } else {
+            this->left->insert(value);
+        }
+    }
     else
-        right = create_node(this->value);
+    {
+        if(this->right == nullptr){
+        right = create_node(value);
+        std::cout << "Inséré à droite" << std::endl;
+        } else {
+            this->right->insert(value);
+        }
+    }
 }
 
+int heightNode = 1;
 int Node::height() const
 {
-    int heigh = 0;
-    return heigh;
+    if (this->is_leaf())
+    {
+        return heightNode;
+    }
+    else
+    {
+        heightNode++;
+        if (this->left)
+        {
+            this->left->height();
+        }
+        if (this->right)
+        {
+            this->right->height();
+        }
+    }
+
+    return heightNode;
 }
