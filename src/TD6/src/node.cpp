@@ -38,50 +38,58 @@ void Node::insert(int value)
     if (value < this->value)
     {
         if (this->left == nullptr)
-        {
             left = create_node(value);
             // std::cout << "Inséré à gauche" << std::endl;
-        }
         else
-        {
             this->left->insert(value);
-        }
     }
     else
     {
         if (this->right == nullptr)
-        {
             right = create_node(value);
             // std::cout << "Inséré à droite" << std::endl;
-        }
         else
-        {
             this->right->insert(value);
-        }
     }
 }
 
 int Node::height() const
 {
     int max = 0;
-        if (this->left && this->right)
-        {
-            int left_height = this->left->height();
-            int right_height = this->right->height();
-            max = std::max(left_height, right_height) + 1;
-        }
-        else if (this->left)
-        {
-            max = this->left->height() + 1;
-        }
-        else if (this->right)
-        {
-            max = this->right->height() + 1;
-        }
-        else if (this->is_leaf())
-        {
-            max = 1;
-        }
+    if (this->left && this->right)
+    {
+        int left_height = this->left->height();
+        int right_height = this->right->height();
+        max = std::max(left_height, right_height) + 1;
+    }
+    else if (this->left)
+    {
+        max = this->left->height() + 1;
+    }
+    else if (this->right)
+    {
+        max = this->right->height() + 1;
+    }
+    else if (this->is_leaf())
+    {
+        max = 1;
+    }
 
     return max;
+}
+
+void Node::delete_childs()
+{
+    if (this->left)
+    {
+        left->delete_childs();
+        delete left;
+        left = nullptr;
+    }
+    if (this->right)
+    {
+        right->delete_childs();
+        delete right;
+        right = nullptr;
+    }
 }

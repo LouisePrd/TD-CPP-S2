@@ -16,7 +16,14 @@ int main()
     n->insert(7);
     n->insert(8);
 
+    // Height de l'arbre
+    //std::cout << n->height() << std::endl;
+
+    // Suppression des enfants
+    /*n->delete_childs();
+    pretty_print_left_right(*n);*/
+
     pretty_print_left_right(*n);
-    std::cout << n->height() << std::endl;
+
     return 0;
 }

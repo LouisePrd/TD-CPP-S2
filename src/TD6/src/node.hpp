@@ -12,6 +12,7 @@ struct Node {
     bool is_leaf() const;
     void insert(int value);
     int height() const;
+    void delete_childs();
 };
 
 void pretty_print_left_right(Node const& node, std::string const& prefix, bool is_left);
