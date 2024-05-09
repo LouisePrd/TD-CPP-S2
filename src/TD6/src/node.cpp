@@ -198,3 +198,59 @@ bool remove(Node *&node, int value)
         }
     }
 }
+
+void delete_tree(Node *node)
+{
+    if (node->left)
+        delete_tree(node->left);
+    if (node->right)
+        delete_tree(node->right);
+    if (node->is_leaf())
+    {
+        delete node;
+        node = nullptr;
+    }
+    else
+    {
+        delete node;
+        node = nullptr;
+    }
+}
+
+int maxValue(Node *node, int &max)
+{
+    if (node->left)
+    {   if (node->value > max)
+            max = node->value;
+        maxValue(node->left, max);
+    }
+    if (node->right)
+    {   if (node->value > max)
+            max = node->value;
+        maxValue(node->right, max);
+    } else if (node->is_leaf())
+    {
+        if (node->value > max)
+            max = node->value;
+    }
+    return max;
+}
+
+int minValue(Node *node, int &min)
+{
+    if (node->left)
+    {   if (node->value < min)
+            min = node->value;
+        minValue(node->left, min);
+    }
+    if (node->right)
+    {   if (node->value < min)
+            min = node->value;
+        minValue(node->right, min);
+    } else if (node->is_leaf())
+    {
+        if (node->value < min)
+            min = node->value;
+    }
+    return min;
+}

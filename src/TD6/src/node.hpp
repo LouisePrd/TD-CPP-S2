@@ -22,3 +22,6 @@ void pretty_print_left_right(Node const& node);
 Node* create_node(int value);
 Node*& most_left(Node*& node);
 bool remove(Node*& node, int value);
+void delete_tree(Node* node);
+int maxValue(Node* node, int& max);
+int minValue(Node* node, int& min);
