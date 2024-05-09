@@ -6,24 +6,23 @@
 
 int main()
 {
-    Node *n = create_node(3);
-    n->insert(6);
-    n->insert(2);
-    n->insert(4);
-    n->insert(1);
-    n->insert(5);
-    n->insert(6);
-    n->insert(7);
-    n->insert(8);
+    Node *n = create_node(5);
+    for (int i : {3, 7, 1, 4, 6, 8, 2})
+    {
+        n->insert(i);
+    }
+
+   
 
     // Height de l'arbre
-    //std::cout << n->height() << std::endl;
+    // std::cout << n->height() << std::endl;
 
     // Suppression des enfants
     /*n->delete_childs();
     pretty_print_left_right(*n);*/
 
     pretty_print_left_right(*n);
+    n->display_infixe();
 
     return 0;
 }

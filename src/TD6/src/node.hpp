@@ -13,6 +13,7 @@ struct Node {
     void insert(int value);
     int height() const;
     void delete_childs();
+    void display_infixe() const;
 };
 
 void pretty_print_left_right(Node const& node, std::string const& prefix, bool is_left);

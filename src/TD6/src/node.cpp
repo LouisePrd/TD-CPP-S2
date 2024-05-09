@@ -39,7 +39,7 @@ void Node::insert(int value)
     {
         if (this->left == nullptr)
             left = create_node(value);
-            // std::cout << "Inséré à gauche" << std::endl;
+        // std::cout << "Inséré à gauche" << std::endl;
         else
             this->left->insert(value);
     }
@@ -47,7 +47,7 @@ void Node::insert(int value)
     {
         if (this->right == nullptr)
             right = create_node(value);
-            // std::cout << "Inséré à droite" << std::endl;
+        // std::cout << "Inséré à droite" << std::endl;
         else
             this->right->insert(value);
     }
@@ -91,5 +91,27 @@ void Node::delete_childs()
         right->delete_childs();
         delete right;
         right = nullptr;
+    }
+}
+
+void Node::display_infixe() const
+{
+    if (this->left)
+    {
+        this->left->display_infixe();
+        std::cout << this->value;
+        if (this->right)
+            this->right->display_infixe();
+    }
+    else if (this->right)
+    {
+        if (this->left)
+            this->left->display_infixe();
+        this->right->display_infixe();
+        std::cout << this->value;
+    }
+    else if (this->is_leaf())
+    {
+        std::cout << this->value;
     }
 }
