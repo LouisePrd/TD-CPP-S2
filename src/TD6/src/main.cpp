@@ -7,7 +7,7 @@
 int main()
 {
     Node *n = create_node(5);
-    for (int i : {3, 7, 1, 4, 6, 8, 2})
+    for (int i : {3, 7, 1, 4, 5, 6, 8, 2, 3})
     {
         n->insert(i);
     }
@@ -22,14 +22,15 @@ int main()
     pretty_print_left_right(*n);*/
 
     // Parcours de l'arbre
-    //n->display_infixe();
-
-    //pretty_print_left_right(*n);
+    /*n->display_infixe();
     std::vector<Node const *> v = n->prefixe();
     for (Node const *n : v)
-    {
-        std::cout << n->value << " ";
-    }
+        std::cout << n->value << " ";*/
+
+    pretty_print_left_right(*n);
+    Node *nodeTest = most_left(n);
+    std::cout << nodeTest->value << std::endl;
+
 
     return 0;
 }

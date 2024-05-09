@@ -134,9 +134,17 @@ std::vector<Node const *> Node::prefixe() const
             this->left->prefixe();
     }
     else if (this->is_leaf())
-    {
         result.push_back(this);
-    }
 
     return result;
+}
+
+Node *&most_left(Node *&node)
+{
+    if (node->left)
+        return most_left(node->left);
+    else if (node->right)
+        return most_left(node->right);
+    else
+        return node;
 }
