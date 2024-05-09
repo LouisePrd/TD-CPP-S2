@@ -115,3 +115,28 @@ void Node::display_infixe() const
         std::cout << this->value;
     }
 }
+
+std::vector<Node const *> result;
+std::vector<Node const *> Node::prefixe() const
+{
+    if (this->left)
+    {
+        result.push_back(this);
+        this->left->prefixe();
+        if (this->right)
+            this->right->prefixe();
+    }
+    else if (this->right)
+    {
+        result.push_back(this);
+        this->right->prefixe();
+        if (this->left)
+            this->left->prefixe();
+    }
+    else if (this->is_leaf())
+    {
+        result.push_back(this);
+    }
+
+    return result;
+}

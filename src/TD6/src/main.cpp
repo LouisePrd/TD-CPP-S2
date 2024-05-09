@@ -21,8 +21,15 @@ int main()
     /*n->delete_childs();
     pretty_print_left_right(*n);*/
 
-    pretty_print_left_right(*n);
-    n->display_infixe();
+    // Parcours de l'arbre
+    //n->display_infixe();
+
+    //pretty_print_left_right(*n);
+    std::vector<Node const *> v = n->prefixe();
+    for (Node const *n : v)
+    {
+        std::cout << n->value << " ";
+    }
 
     return 0;
 }
