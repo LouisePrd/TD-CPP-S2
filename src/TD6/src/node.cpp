@@ -148,3 +148,53 @@ Node *&most_left(Node *&node)
     else
         return node;
 }
+
+// node est le noeuf racine
+// int valeur à supp
+bool remove(Node *&node, int value)
+{
+    if (value == node->value && node->is_leaf())
+    {
+        delete node;
+        node = nullptr;
+        return true;
+    }
+    else if (value == node->value && node->left && node->right == nullptr)
+    {
+        node = node->left;
+        delete node->left;
+        node->left = nullptr;
+        return true;
+    }
+    else if (value == node->value && node->right && node->left == nullptr)
+    {
+        node = node->right;
+        delete node->right;
+        node->right = nullptr;
+        return true;
+    }
+    else if (value == node->value && node->left && node->right)
+    {
+        Node *noeudGauche = most_left(node);
+        std::cout << "Noeud le plus à gauche : " << noeudGauche->value << std::endl;
+        node->value = noeudGauche->value;
+        if (node->left)
+            remove(node->left, noeudGauche->value);
+        else if (node->right)
+            remove(node->right, noeudGauche->value);
+        return true;
+    }
+    else
+    {
+        if (value < node->value)
+        {
+            if (node->left)
+                return remove(node->left, value);
+        }
+        else
+        {
+            if (node->right)
+                return remove(node->right, value);
+        }
+    }
+}

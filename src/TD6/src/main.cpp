@@ -7,14 +7,12 @@
 int main()
 {
     Node *n = create_node(5);
-    for (int i : {3, 7, 1, 4, 5, 6, 8, 2, 3})
+    for (int i : {3, 7, 1, 4, 6, 8, 2})
     {
         n->insert(i);
     }
 
-   
-
-    // Height de l'arbre
+    // Hauteur de l'arbre
     // std::cout << n->height() << std::endl;
 
     // Suppression des enfants
@@ -27,9 +25,11 @@ int main()
     for (Node const *n : v)
         std::cout << n->value << " ";*/
 
-    pretty_print_left_right(*n);
-    Node *nodeTest = most_left(n);
-    std::cout << nodeTest->value << std::endl;
+    // Remove d'un noeud
+    /*pretty_print_left_right(*n);
+    remove(n, 8);
+    pretty_print_left_right(*n);*/
+
 
 
     return 0;
