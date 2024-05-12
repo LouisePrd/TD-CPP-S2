@@ -44,14 +44,26 @@ void Graph::WeightedGraph::add_directed_edge(int const from, int const to, float
     adjacency_list[from].push_back(edge);
 }
 
-void add_undirected_edge(int const from, int const to, float const weight)
+void Graph::WeightedGraph::add_undirected_edge(int const from, int const to, float const weight)
 {
-    add_undirected_edge(from, to, weight);
-    add_undirected_edge(to, from, weight);
+    add_directed_edge(from, to, weight);
+    add_directed_edge(to, from, weight);   
 }
 
-Graph::WeightedGraph build_from_adjacency_matrix(std::vector<std::vector<float>> const &adjacency_matrix)
+Graph::WeightedGraph Graph::build_from_adjacency_matrix(std::vector<std::vector<float>> const &adjacency_matrix)
 {
     Graph::WeightedGraph graph;
+
+    for (unsigned int i = 0; i < adjacency_matrix.size(); i++)
+    {
+        graph.add_vertex(i);
+        for (unsigned int j = 0; j < adjacency_matrix[i].size(); j++)
+        {
+            if (adjacency_matrix[i][j] != 0)
+            {
+                graph.add_directed_edge(i, j, adjacency_matrix[i][j]);
+            }
+        }
+    }
     return graph;
 }
