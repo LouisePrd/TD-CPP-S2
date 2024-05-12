@@ -23,10 +23,9 @@ void bubble_sort(std::vector<int> &vec)
 }
 
 // Exercice 2 (tri récursif)
-void merge_sort_merge(std::vector<float> &vec, size_t const left, size_t const middle, size_t const right);
-void merge_sort(std::vector<float> &vec, size_t const left, size_t const right);
-void merge_sort(std::vector<float> &vec)
-{
+void merge_sort_merge(std::vector<float> & vec, size_t const left, size_t const middle, size_t const right);
+void merge_sort(std::vector<float> & vec, size_t const left, size_t const right);
+void merge_sort(std::vector<float> & vec) {
     merge_sort(vec, 0, vec.size() - 1);
 }
 
@@ -42,7 +41,6 @@ int main()
 
     // Tri fusion
     std::vector<int> array2{1, 2, 4, 5, 6, 12, 8, 9, 3, 3, 0};
-    int sizeT = array2.size();
 
     return 0;
 }

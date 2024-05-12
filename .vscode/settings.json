@@ -1,5 +1,5 @@
 {
-    "cmake.sourceDirectory": ["${workspaceFolder}/src/TD1","${workspaceFolder}/src/TD2", "${workspaceFolder}/src/TD3", "${workspaceFolder}/src/TD4", "${workspaceFolder}/src/TD5", "${workspaceFolder}/src/TD6"],
+    "cmake.sourceDirectory": ["${workspaceFolder}/src/TD1","${workspaceFolder}/src/TD2", "${workspaceFolder}/src/TD3", "${workspaceFolder}/src/TD4", "${workspaceFolder}/src/TD5", "${workspaceFolder}/src/TD6", "${workspaceFolder}/src/TD7"],
     "files.associations": {
         "vector": "cpp",
         "__bit_reference": "cpp",
@@ -51,6 +51,8 @@
         "optional": "cpp",
         "__memory": "cpp",
         "__tree": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "utility": "cpp",
+        "functional": "cpp"
     }
 }
