@@ -3,6 +3,7 @@
 #include <string>
 #include <cstdlib>
 #include <unordered_map>
+#include <queue>
 #include "graph.hpp"
 
 namespace Graph
@@ -66,4 +67,33 @@ Graph::WeightedGraph Graph::build_from_adjacency_matrix(std::vector<std::vector<
         }
     }
     return graph;
+}
+
+void Graph::WeightedGraph::print_DFS(int const start) const{
+    std::vector<int> sommets;
+    std::vector<int> sommetsVisités;
+
+    // ajout sommet de départ dans la pile
+    sommets.push_back(start);
+
+    while(!sommets.empty()){
+        sommetsVisités.push_back(sommets.back());
+        sommets.pop_back();
+        for (WeightedGraphEdge edge : adjacency_list.at(sommetsVisités.back())){
+            if (std::find(sommetsVisités.begin(), sommetsVisités.end(), edge.to) == sommetsVisités.end() && std::find(sommets.begin(), sommets.end(), edge.to) == sommets.end()){
+                sommets.push_back(edge.to);
+            }
+        }
+    }
+
+    std::cout << "Parcours en profondeur (DFS) : ";
+    for (int sommet : sommetsVisités){
+        std::cout << sommet << " ";
+    }
+    
+}
+
+void Graph::WeightedGraph::print_BFS(int const start) const{
+    std::queue<int> queue;
+
 }

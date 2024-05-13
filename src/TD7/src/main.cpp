@@ -10,7 +10,7 @@
 int main()
 {
     // Exercice 1 (construire un graphe)
-    std::vector<std::vector<float>> const& adjacency_matrix = {
+    std::vector<std::vector<float>> const &adjacency_matrix = {
         {0.0f, 1.0f, 1.0f},
         {.0f, .0f, 1.0f},
         {.0f, .0f, .0f},
@@ -25,10 +25,22 @@ int main()
     graph.add_directed_edge(0, 2, 1.0f);
     graph.add_directed_edge(1, 2, 1.0f);
 
-    if (graphMatrix == graph)
-        std::cout << "Egaux hihi les chipies" << std::endl;
+    /*if (graphMatrix == graph)
+        std::cout << "Egaux hihi" << std::endl;
     else
-        std::cout << "Pas egaux rip" << std::endl;
+        std::cout << "Pas egaux rip" << std::endl;*/
 
+    // Exercice 2 (traverser un graphe)
+    std::vector<std::vector<float>> const &adjacency_matrix2 = {
+        {0.0f, 1.0f, 1.0f, 0.0f, 0.f},
+        {0.0f, 0.0f, 1.0f, 1.0f, 0.F},
+        {0.0f, 0.0f, 0.0f, .0f, 1.0f},
+        {0.0f, 0.0f, 0.0f, .0f, 1.0f},
+        {0.0f, 0.0f, 0.0f, .0f, .0f},
+    };
+    Graph::WeightedGraph graphMatrix2 = Graph::build_from_adjacency_matrix(adjacency_matrix2);
+
+    graphMatrix2.print_DFS(0);
+    
     return 0;
 }
