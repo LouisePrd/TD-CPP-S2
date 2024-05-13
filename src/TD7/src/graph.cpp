@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <unordered_map>
 #include <queue>
+#include <stack>
 #include "graph.hpp"
 
 namespace Graph
@@ -48,7 +49,7 @@ void Graph::WeightedGraph::add_directed_edge(int const from, int const to, float
 void Graph::WeightedGraph::add_undirected_edge(int const from, int const to, float const weight)
 {
     add_directed_edge(from, to, weight);
-    add_directed_edge(to, from, weight);   
+    add_directed_edge(to, from, weight);
 }
 
 Graph::WeightedGraph Graph::build_from_adjacency_matrix(std::vector<std::vector<float>> const &adjacency_matrix)
@@ -69,31 +70,60 @@ Graph::WeightedGraph Graph::build_from_adjacency_matrix(std::vector<std::vector<
     return graph;
 }
 
-void Graph::WeightedGraph::print_DFS(int const start) const{
-    std::vector<int> sommets;
+void Graph::WeightedGraph::print_DFS(int const start) const
+{
+    std::stack<int> file;
     std::vector<int> sommetsVisités;
 
     // ajout sommet de départ dans la pile
-    sommets.push_back(start);
+    file.push(start);
 
-    while(!sommets.empty()){
-        sommetsVisités.push_back(sommets.back());
-        sommets.pop_back();
-        for (WeightedGraphEdge edge : adjacency_list.at(sommetsVisités.back())){
-            if (std::find(sommetsVisités.begin(), sommetsVisités.end(), edge.to) == sommetsVisités.end() && std::find(sommets.begin(), sommets.end(), edge.to) == sommets.end()){
-                sommets.push_back(edge.to);
+    while (!file.empty())
+    {
+        sommetsVisités.push_back(file.top());
+        file.pop();
+
+        for (WeightedGraphEdge edge : adjacency_list.at(sommetsVisités.back()))
+        {
+            if (std::find(sommetsVisités.begin(), sommetsVisités.end(), edge.to) == sommetsVisités.end()) // si le sommet n'a pas déjà été visité
+            {
+                file.push(edge.to);
             }
         }
     }
 
     std::cout << "Parcours en profondeur (DFS) : ";
-    for (int sommet : sommetsVisités){
+    for (int sommet : sommetsVisités)
+    {
         std::cout << sommet << " ";
     }
-    
+    std::cout << std::endl;
 }
 
-void Graph::WeightedGraph::print_BFS(int const start) const{
+void Graph::WeightedGraph::print_BFS(int const start) const
+{
     std::queue<int> queue;
+    std::vector<int> sommetsVisités;
 
+    queue.push(start);
+    while (!queue.empty())
+    {
+        sommetsVisités.push_back(queue.front());
+        queue.pop();
+
+        for (WeightedGraphEdge edge : adjacency_list.at(sommetsVisités.back()))
+        {
+            if (std::find(sommetsVisités.begin(), sommetsVisités.end(), edge.to) == sommetsVisités.end())
+            {
+                queue.push(edge.to);
+            }
+        }
+    }
+
+        std::cout << "Parcours en largeur (BFS) : ";
+        for (int sommet : sommetsVisités)
+        {
+            std::cout << sommet << " ";
+        }
+        std::cout << std::endl;
 }

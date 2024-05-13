@@ -32,15 +32,18 @@ int main()
 
     // Exercice 2 (traverser un graphe)
     std::vector<std::vector<float>> const &adjacency_matrix2 = {
-        {0.0f, 1.0f, 1.0f, 0.0f, 0.f},
-        {0.0f, 0.0f, 1.0f, 1.0f, 0.F},
-        {0.0f, 0.0f, 0.0f, .0f, 1.0f},
-        {0.0f, 0.0f, 0.0f, .0f, 1.0f},
-        {0.0f, 0.0f, 0.0f, .0f, .0f},
+        {0.0f, 1.0f, 1.0f, 0.0f, 0.f, 0.f, 0.f},
+        {0.0f, 0.0f, 0.0f, 1.0f, 1.f, 0.f, 0.f},
+        {0.0f, 0.0f, 0.0f, 0.0f, 0.f, 1.f, 1.f},
+        {0.0f, 0.0f, 0.0f, 0.0f, 0.f, 0.f, 0.f},
+        {0.0f, 0.0f, 0.0f, 0.0f, 0.f, 0.f, 0.f},
+        {0.0f, 0.0f, 0.0f, 0.0f, 0.f, 0.f, 0.f},
+        {0.0f, 0.0f, 0.0f, 0.0f, 0.f, 0.f, 0.f},
     };
     Graph::WeightedGraph graphMatrix2 = Graph::build_from_adjacency_matrix(adjacency_matrix2);
 
     graphMatrix2.print_DFS(0);
+    graphMatrix2.print_BFS(0);
     
     return 0;
 }
