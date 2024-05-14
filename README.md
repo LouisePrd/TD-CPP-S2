@@ -13,3 +13,4 @@ https://dsmte.github.io/Learn--cpp_programming/TDs
 - TD5 - Hachage et tableaux associatifs : ✅
 - TD6 - Arbres binaires de recherche : ✅
 - TD7 - Graphes : ✅
+- TD8 - Encodage et compression : à faire
