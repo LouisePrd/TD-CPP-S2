@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cstdlib>
+#include "ScopedTimer.hpp"
 
 bool is_sorted(std::vector<int> const &vec)
 {
@@ -10,6 +12,7 @@ bool is_sorted(std::vector<int> const &vec)
 // Exercice 1 (tri itératif)
 void bubble_sort(std::vector<int> &vec)
 {
+    ScopedTimer timer("Itératif");
     for (unsigned int i = 0; i < vec.size(); i++)
     {
         for (unsigned int j = 0; j < vec.size() - 1; j++)
@@ -52,14 +55,53 @@ void quick_sort(std::vector<float> & vec, size_t const left, size_t const right)
 
 
 void quick_sort(std::vector<float> & vec) {
+    ScopedTimer timer("QuickSort");
     quick_sort(vec, 0, vec.size() - 1);
 }
 
+std::vector<int> generate_random_vector(size_t const size, int const max = 100) {
+    std::vector<int> vec(size);
+    std::generate(vec.begin(), vec.end(), [&max]() { return std::rand() % max;} );
+    return vec;
+}
+
+// Exercice 4 : dichotomie
+int search(std::vector<int> const &vec, int const value)
+{
+    int left = 0;
+    int right = vec.size() - 1;
+    int middle = (left + right) / 2;
+
+    if (vec[middle] < value)
+    {
+        left = middle + 1;
+        for (int i = left; i <= right; i++)
+        {
+            if (vec[i] == value)
+                return i;
+        }
+    } else if (vec[middle] > value)
+    {
+        right = middle - 1;
+        for (int i = right; i >= left; i--)
+        {
+            if (vec[i] == value)
+                return i;
+        }
+    } else
+    {
+        return middle;
+    }
+    
+
+    return -1;
+}
 
 int main()
 {
     // Tri à bulle
     std::vector<int> array{1, 2, 4, 5, 6, 12, 8, 9, 3, 3, 0};
+    std::vector<int> arrayGenerate = generate_random_vector(1000);
     bubble_sort(array);
     for (unsigned int i = 0; i < array.size(); i++)
     {
@@ -68,12 +110,27 @@ int main()
 
     // Tri fusion
     std::vector<float> array2{1, 9, 4, 5, 6, 12, 8, 9, 3, 3, 0};
-    int size = array2.size();
+    std::vector<int> arrayGenerate2 = generate_random_vector(1000);
     quick_sort(array2);
     for (unsigned int i = 0; i < array2.size(); i++)
     {
-        std::cout << array2[i] << ", ";
+        //std::cout << array2[i] << ", ";
     }
+
+
+    // Comparaison des algorithmes de tri
+    std::vector<int> arrayComp {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    std::sort(arrayComp.begin(), arrayComp.end());
+
+
+    // Recherche dichotomique
+    std::vector<int> arraySearch {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int searching = search(arraySearch, 5);
+    if (searching != -1)
+        std::cout << "La valeur se trouve à l'index " << searching << std::endl;
+    else
+        std::cout << "La valeur n'a pas été trouvée" << std::endl;
+    
 
     return 0;
 }
