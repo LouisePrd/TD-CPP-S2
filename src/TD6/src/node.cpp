@@ -219,18 +219,11 @@ void delete_tree(Node *node)
 
 int maxValue(Node *node, int &max)
 {
-    if (node->left)
-    {   if (node->value > max)
-            max = node->value;
-        maxValue(node->left, max);
-    }
     if (node->right)
     {   if (node->value > max)
             max = node->value;
         maxValue(node->right, max);
-    } else if (node->is_leaf())
-    {
-        if (node->value > max)
+    } else {
             max = node->value;
     }
     return max;
@@ -242,14 +235,7 @@ int minValue(Node *node, int &min)
     {   if (node->value < min)
             min = node->value;
         minValue(node->left, min);
-    }
-    if (node->right)
-    {   if (node->value < min)
-            min = node->value;
-        minValue(node->right, min);
-    } else if (node->is_leaf())
-    {
-        if (node->value < min)
+    } else {
             min = node->value;
     }
     return min;
