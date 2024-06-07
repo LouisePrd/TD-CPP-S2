@@ -108,7 +108,7 @@ int main()
         //std::cout << array[i] << ", ";
     }
 
-    // Tri fusion
+    // Tri rapide
     std::vector<float> array2{1, 9, 4, 5, 6, 12, 8, 9, 3, 3, 0};
     std::vector<int> arrayGenerate2 = generate_random_vector(1000);
     quick_sort(array2);
